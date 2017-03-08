@@ -70,13 +70,13 @@ public class PacManVerhalten : MonoBehaviour {
             Destroy(col.gameObject);
         }
         //Kollision mit Wand --> zurueckbewegen
-        else
-        {
-            if (col.name.StartsWith("IR")|| col.name.StartsWith("IW")|| col.name.StartsWith("AW"))
-            {
-                this.transform.Translate(-3 * timeDelta, 0, 0);
-            }
-        }
+        //else
+        //{
+        //    if (col.name.StartsWith("IR")|| col.name.StartsWith("IW")|| col.name.StartsWith("AW"))
+        //    {
+        //        this.transform.Translate(-3 * timeDelta, 0, 0);
+        //    }
+        //}
         //print("Test: " + col + " Score: " + score + " " + rot.w + " "+rot.x+" "+rot.y+" "+rot.z);
     }
 };
