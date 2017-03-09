@@ -5,58 +5,101 @@ using UnityEngine;
 public class PacManVerhalten : MonoBehaviour {
 
     //Lokale Variable zum Zaehlen
-    private int score;
-    private float old_v, old_h;
+    private int score, totalTime;
+    private float old_v, old_h, camera_angle;
     public float timeDelta;
+    private GameObject mainCamera;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         score = 0;
         old_v = 0;
         old_h = 0;
-	}
+        camera_angle = 0;
+        mainCamera = GameObject.Find("MainCamera");
+        totalTime = 180;
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        //print(tex.GetHashCode());
+        //GameObject.Find("Anzeige").GetComponent<Renderer>().material.mainTexture = tex;
         timeDelta = 2 * Time.deltaTime;
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
+        if (camera_angle != 0)
+        {
+            if (camera_angle < 0)
+            {
+                if (camera_angle > -totalTime * timeDelta)
+                {
+                    mainCamera.transform.Rotate(0, camera_angle, 0);
+                    camera_angle = 0;
+                }
+                else {
+                    camera_angle += totalTime * timeDelta;
+                    mainCamera.transform.Rotate(0, -totalTime * timeDelta, 0);
+                }
+            }
+            else
+            {
+                if (camera_angle < totalTime * timeDelta)
+                {
+                    mainCamera.transform.Rotate(0, camera_angle, 0);
+                    camera_angle = 0;
+                }
+                else
+                {
+                    camera_angle -= totalTime * timeDelta;
+                    mainCamera.transform.Rotate(0, totalTime * timeDelta, 0);
+                }
+            }
+        }
+
+        //Rotation um 180 Grad
         if (v < 0 && old_v == 0)
         {
             this.transform.Rotate(0, 180f, 0);
             old_v = v;
         }
+        //Bewegung nach vorn
         if (v > 0)
         {
             this.transform.Translate(2 * Time.deltaTime, 0, 0);
             old_v = 0;
         }
         if (v == 0) old_v = 0;
-
+        //Rotation nach links
         if (h < 0 && old_h == 0)
         {
             this.transform.Rotate(0, -90f, 0);
             old_h = h;
+            camera_angle -= 90;
+            mainCamera.transform.Rotate(0, 90f, 0);
         }
+        //Rotation nach rechts
         if (h > 0 && old_h == 0)
         {
             this.transform.Rotate(0, 90f, 0);
             old_h = h;
+            camera_angle += 90;
+            mainCamera.transform.Rotate(0, -90f, 0);
         }
         if (h == 0) old_h = 0;
-
-        if (this.transform.position.z < -13.5)
+        //Tunnel
+        if (this.transform.position.z < -10)
         {
             Vector3 pos = this.transform.position;
-            pos.z = 13.5f;
+            pos.z = 10.0f;
             this.transform.position = pos;
         }
-        if (this.transform.position.z > 13.5)
+        if (this.transform.position.z > 10)
         {
             Vector3 pos = this.transform.position;
-            pos.z = -13.5f;
+            pos.z = -10.0f;
             this.transform.position = pos;
         }
     }
@@ -70,13 +113,13 @@ public class PacManVerhalten : MonoBehaviour {
             Destroy(col.gameObject);
         }
         //Kollision mit Wand --> zurueckbewegen
-        //else
-        //{
-        //    if (col.name.StartsWith("IR")|| col.name.StartsWith("IW")|| col.name.StartsWith("AW"))
-        //    {
-        //        this.transform.Translate(-3 * timeDelta, 0, 0);
-        //    }
-        //}
+        else
+        {
+            if (col.name.StartsWith("IR")|| col.name.StartsWith("IW")|| col.name.StartsWith("AW"))
+            {
+                this.transform.Translate(-3 * timeDelta, 0, 0);
+            }
+        }
         //print("Test: " + col + " Score: " + score + " " + rot.w + " "+rot.x+" "+rot.y+" "+rot.z);
     }
 };
