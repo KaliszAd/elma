@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Wenn die NavMesh wege nicht vollstaendig generiert,
+// bzw. gebacken werden, kann es sein, dass diese z.B.
+// durch die Geister blockiert waren. Da kann die Agent
+// Height angehoben werden und der Geist hochgehoben werden.
+// Nach dem Backen der Wege kann man wieder den Geist
+// runternehmen. Der Geist wirkt sonst als Obstacle.
+
 public class PacManVerhalten : MonoBehaviour {
 
     //Lokale Variable zum Zaehlen
@@ -90,18 +97,18 @@ public class PacManVerhalten : MonoBehaviour {
         }
         if (h == 0) old_h = 0;
         //Tunnel
-        if (this.transform.position.z < -10)
-        {
-            Vector3 pos = this.transform.position;
-            pos.z = 10.0f;
-            this.transform.position = pos;
-        }
-        if (this.transform.position.z > 10)
-        {
-            Vector3 pos = this.transform.position;
-            pos.z = -10.0f;
-            this.transform.position = pos;
-        }
+        //if (this.transform.position.z < -10)
+        //{
+        //    Vector3 pos = this.transform.position;
+        //    pos.z = 10.0f;
+        //    this.transform.position = pos;
+        //}
+        //if (this.transform.position.z > 10)
+        //{
+        //    Vector3 pos = this.transform.position;
+        //    pos.z = -10.0f;
+        //    this.transform.position = pos;
+        //}
     }
 
     void OnTriggerEnter(Collider col)
