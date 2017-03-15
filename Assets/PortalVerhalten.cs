@@ -40,7 +40,6 @@ public class PortalVerhalten : MonoBehaviour {
         if (col.name.ToString() == "PacMan")
         {
             col.transform.position = endpunkt;
-            //col.transform.Translate(endpunkt, Space.World);
         }
 
     }
