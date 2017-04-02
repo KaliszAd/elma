@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // Wenn die NavMesh wege nicht vollstaendig generiert,
 // bzw. gebacken werden, kann es sein, dass diese z.B.
@@ -19,6 +21,9 @@ public class PacManVerhalten : MonoBehaviour {
     private GameObject mainCamera;
     private AudioSource _Chramst;
 
+    public GameObject PauseCanvas;
+    private bool paused = false;
+    private bool showing = false;
 
     // Use this for initialization
     void Start () {
@@ -112,9 +117,14 @@ public class PacManVerhalten : MonoBehaviour {
             score++;
         }
         //print("Test: " + col + " Score: " + score + " " + rot.w + " "+rot.x+" "+rot.y+" "+rot.z);
-        //if (col.name.StartsWith("G"))
-        //{
-
-        //}
+        if (col.name.StartsWith("G"))
+        {
+            paused = true;
+            Time.timeScale = 0;
+            showing = true;
+            PauseCanvas.SetActive(showing);
+            PauseCanvas.GetComponentInChildren<Text>().text = "Verloren";
+            PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.SetActive(false);
+        }
     }
 };

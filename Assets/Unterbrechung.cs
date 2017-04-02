@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Unterbrechung : MonoBehaviour {
 
+
+    public GameObject Spielbrett;
     public GameObject PauseCanvas;
+    public GameObject StatusCanvas;
     private bool paused = false;
     private bool showing = false;
+    private long temp_score;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -29,6 +34,8 @@ public class Unterbrechung : MonoBehaviour {
                 fortsetzen();
             }
         }
+
+        getScore();
 	}
 
     public void fortsetzen() {
@@ -39,11 +46,35 @@ public class Unterbrechung : MonoBehaviour {
     }
 
     public void beenden() {
+
+        // Nur deaktiviert, wenn verloren
+        if (PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.activeInHierarchy == false)
+        {
+            LoadByIndex(0);
+            //paused = false;
+            Time.timeScale = 1;
+            //showing = false;
+            //PauseCanvas.SetActive(showing);
+        }
+        else {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+        }
+    }
+
+    public void LoadByIndex(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void getScore()
+    {
+        temp_score = Spielbrett.GetComponent<HighScore>().score;
+        StatusCanvas.GetComponentInChildren<Text>().text = "Score: " + temp_score.ToString();
+
     }
 
 }
