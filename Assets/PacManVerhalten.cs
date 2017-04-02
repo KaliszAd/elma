@@ -104,7 +104,7 @@ public class PacManVerhalten : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         //Kollision mit Kapsel
-        if (col.name.StartsWith("C"))
+        if (col.name.Equals("Capsule"))
         {
             //AudioSource.PlayOneShot();
             Destroy(col.gameObject);
