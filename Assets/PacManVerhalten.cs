@@ -9,6 +9,7 @@ using UnityEngine;
 // Nach dem Backen der Wege kann man wieder den Geist
 // runternehmen. Der Geist wirkt sonst als Obstacle.
 
+[RequireComponent(typeof(AudioSource))]
 public class PacManVerhalten : MonoBehaviour {
 
     //Lokale Variable zum Zaehlen
@@ -16,6 +17,7 @@ public class PacManVerhalten : MonoBehaviour {
     private float old_v, old_h, camera_angle;
     public float timeDelta;
     private GameObject mainCamera;
+    private AudioSource _Chramst;
 
 
     // Use this for initialization
@@ -26,6 +28,7 @@ public class PacManVerhalten : MonoBehaviour {
         camera_angle = 0;
         mainCamera = GameObject.Find("MainCamera");
         totalTime = 180;
+        _Chramst = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -96,19 +99,6 @@ public class PacManVerhalten : MonoBehaviour {
             mainCamera.transform.Rotate(0, -90f, 0);
         }
         if (h == 0) old_h = 0;
-        //Tunnel
-        //if (this.transform.position.z < -10)
-        //{
-        //    Vector3 pos = this.transform.position;
-        //    pos.z = 10.0f;
-        //    this.transform.position = pos;
-        //}
-        //if (this.transform.position.z > 10)
-        //{
-        //    Vector3 pos = this.transform.position;
-        //    pos.z = -10.0f;
-        //    this.transform.position = pos;
-        //}
     }
 
     void OnTriggerEnter(Collider col)
@@ -116,16 +106,10 @@ public class PacManVerhalten : MonoBehaviour {
         //Kollision mit Kapsel
         if (col.name.StartsWith("C"))
         {
-            score++;
+            //AudioSource.PlayOneShot();
             Destroy(col.gameObject);
-        }
-        //Kollision mit Wand --> zurueckbewegen
-        else
-        {
-            if (col.name.StartsWith("IR")|| col.name.StartsWith("IW")|| col.name.StartsWith("AW"))
-            {
-                this.transform.Translate(-3 * timeDelta, 0, 0);
-            }
+            _Chramst.Play();
+            score++;
         }
         //print("Test: " + col + " Score: " + score + " " + rot.w + " "+rot.x+" "+rot.y+" "+rot.z);
     }

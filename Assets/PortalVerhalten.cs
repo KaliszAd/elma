@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PortalVerhalten : MonoBehaviour {
 
     string portal;
     private Vector3 endpunkt;
+    //private GameObject pacman;
+    //private NavMeshAgent agent;
 
     // Use this for initialization
     void Start()
     {
+        //pacman = GameObject.Find("PacMan");
         portal = gameObject.name;
         // Position vom Endpunkt initialisieren
         if (portal == "LinksPortal")
@@ -39,7 +43,9 @@ public class PortalVerhalten : MonoBehaviour {
         // Nur PacMan durchlassen
         if (col.name.ToString() == "PacMan")
         {
+            col.GetComponent<NavMeshAgent>().enabled = false;
             col.transform.position = endpunkt;
+            col.GetComponent<NavMeshAgent>().enabled = true;
         }
 
     }
