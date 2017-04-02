@@ -112,5 +112,9 @@ public class PacManVerhalten : MonoBehaviour {
             score++;
         }
         //print("Test: " + col + " Score: " + score + " " + rot.w + " "+rot.x+" "+rot.y+" "+rot.z);
+        //if (col.name.StartsWith("G"))
+        //{
+
+        //}
     }
 };
