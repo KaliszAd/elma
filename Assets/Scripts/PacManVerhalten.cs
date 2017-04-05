@@ -104,6 +104,8 @@ public class PacManVerhalten : MonoBehaviour {
             mainCamera.transform.Rotate(0, -90f, 0);
         }
         if (h == 0) old_h = 0;
+
+        gewinn();
     }
 
     void OnTriggerEnter(Collider col)
@@ -114,15 +116,6 @@ public class PacManVerhalten : MonoBehaviour {
             Destroy(col.gameObject);
             _Chramst.Play();
             Spielbrett.GetComponent<HighScore>().incrementScore();
-            if (GameObject.FindWithTag("Kapsel") == null)
-            {
-                paused = true;
-                Time.timeScale = 0;
-                showing = true;
-                PauseCanvas.SetActive(showing);
-                PauseCanvas.GetComponentInChildren<Text>().text = "Gewonnen mit Score: " + Spielbrett.GetComponent<HighScore>().getScore().ToString();
-                PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.SetActive(false);
-            }
         }
 
         if (col.tag == "Geist")
@@ -133,6 +126,23 @@ public class PacManVerhalten : MonoBehaviour {
             PauseCanvas.SetActive(showing);
             PauseCanvas.GetComponentInChildren<Text>().text = "Verloren mit Score: " + Spielbrett.GetComponent<HighScore>().getScore().ToString();
             PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.SetActive(false);
+        }
+    }
+
+    public void gewinn()
+    {
+        if (GameObject.FindGameObjectsWithTag("Kapsel").Length == 0)
+        {
+            paused = true;
+            Time.timeScale = 0;
+            showing = true;
+            PauseCanvas.SetActive(showing);
+            PauseCanvas.GetComponentInChildren<Text>().text = "Gewonnen mit Score: " + Spielbrett.GetComponent<HighScore>().getScore().ToString();
+            PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.SetActive(false);
+        }
+        else
+        {
+            print(GameObject.FindGameObjectsWithTag("Kapsel").Length.ToString());
         }
     }
 };
