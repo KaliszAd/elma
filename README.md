@@ -46,3 +46,5 @@ Autoren und die Arbeiten:
 ** Musik und Esseffekt
 ** Dokumentation, Repository-Verwaltung
 ** Minimap und Score überarbeitet
+** HighScore
+** Menüs, Eingabefelder, Audioeinstellungen
