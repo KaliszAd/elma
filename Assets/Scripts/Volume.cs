@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Volume : MonoBehaviour {
 
+    public AudioSource SFX_Volume;
+    public AudioSource Music_Volume;
+    public AudioListener Global_Volume;
+
 	// Use this for initialization
 	void Start () {
 		

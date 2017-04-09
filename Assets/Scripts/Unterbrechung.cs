@@ -48,22 +48,8 @@ public class Unterbrechung : MonoBehaviour {
 
     public void beenden() {
 
-        // Nur deaktiviert, wenn verloren
-        if (PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.activeInHierarchy == false)
-        {
             LoadByIndex(0);
-            //paused = false;
             Time.timeScale = 1;
-            //showing = false;
-            //PauseCanvas.SetActive(showing);
-        }
-        else {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-        }
     }
 
     public void LoadByIndex(int sceneIndex)
