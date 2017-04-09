@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,6 +13,7 @@ public class HighScore : MonoBehaviour {
     private float totalGameTime = 0;
 
     private List<ScoreItem> table;
+    public GameObject HighScoreMenu;
 
     private void Start()
     {
@@ -46,7 +48,7 @@ public class HighScore : MonoBehaviour {
             // Lösche überflüssige Elemente
             //table.Sort();
             // Elegantes sortieren: http://stackoverflow.com/questions/289010/c-sharp-list-sort-by-x-then-y
-            table.Sort(delegate (ScoreItem a, ScoreItem b)
+            table.Sort(delegate (ScoreItem b, ScoreItem a)
             {
                 int z = a.score.CompareTo(b.score);
                 if (z != 0) return z;
@@ -100,6 +102,15 @@ public class HighScore : MonoBehaviour {
             PlayerPrefs.DeleteKey("highscore" + i);
             i++;
         }
+    }
+
+    public void displayScore()
+    {
+        string temp_string = "";
+        foreach (var item in table) {
+            temp_string = temp_string + item.name + " hat " + item.score + " Punkte in " + item.time + " s erlangt.\n"; 
+        }
+        HighScoreMenu.GetComponent<Text>().text = temp_string; 
     }
 
     public void setScore(string playerName)

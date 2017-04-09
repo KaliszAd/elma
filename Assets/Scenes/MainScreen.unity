@@ -3021,6 +3021,7 @@ GameObject:
   - component: {fileID: 1689084518}
   - component: {fileID: 1689084522}
   - component: {fileID: 1689084523}
+  - component: {fileID: 1689084524}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3128,6 +3129,18 @@ MonoBehaviour:
   MusicVolume: {fileID: 1122169892}
   SFXVolume: {fileID: 910703498}
   GlobalVolume: {fileID: 854374090}
+--- !u!114 &1689084524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1689084517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cd6d53f324022418f346573fc3d30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HighScoreMenu: {fileID: 1179586464}
 --- !u!1 &1754084649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,7 +3306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 64.33333}
+  m_AnchoredPosition: {x: 0, y: 99.3}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1766492639
@@ -3527,6 +3540,17 @@ MonoBehaviour:
       - m_Target: {fileID: 405361210}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1689084524}
+        m_MethodName: displayScore
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
