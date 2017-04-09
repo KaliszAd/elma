@@ -36,9 +36,9 @@ public class PortalVerhalten : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         // Auf Konsole mitschreiben
-        print(portal);
-        print(endpunkt.ToString() );
-        print(col.gameObject.name.ToString());
+        //print(portal);
+        //print(endpunkt.ToString() );
+        //print(col.gameObject.name.ToString());
 
         // Nur PacMan durchlassen
         if (col.name.ToString() == "PacMan")

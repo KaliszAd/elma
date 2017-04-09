@@ -21,11 +21,11 @@ public class SpielBeenden : MonoBehaviour {
             cleaner = false;
         }
 
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 
     public void verlust()
@@ -37,7 +37,7 @@ public class SpielBeenden : MonoBehaviour {
         PauseCanvas.GetComponentInChildren<Text>().text = "Verloren mit Score: " + Spielbrett.GetComponent<HighScore>().getScore().ToString() + 
             "\nund Zeit: " + Spielbrett.GetComponent<HighScore>().getGameTime().ToString() + " s";
         PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.SetActive(false);
-        PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("EingabeFeld").gameObject.SetActive(true);    
+        PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("EingabeFeld").gameObject.SetActive(true);
     }
 
     public void gewinn()

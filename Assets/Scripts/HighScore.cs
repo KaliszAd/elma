@@ -15,6 +15,8 @@ public class HighScore : MonoBehaviour {
 
     private void Start()
     {
+        // Initialize Unity way
+        table = new List<ScoreItem>();
         loadScore();
     }
 
@@ -42,12 +44,20 @@ public class HighScore : MonoBehaviour {
         {
             // Sortiere nach score, sortiere nach time wenn Übereinstimmung von score
             // Lösche überflüssige Elemente
-            table.Sort();
+            //table.Sort();
+            // Elegantes sortieren: http://stackoverflow.com/questions/289010/c-sharp-list-sort-by-x-then-y
+            table.Sort(delegate (ScoreItem a, ScoreItem b)
+            {
+                int z = a.score.CompareTo(b.score);
+                if (z != 0) return z;
+                else return a.time.CompareTo(b.time);
+            });
             if (table.Count > 10)
             {
                 table = table.GetRange(0, 10);
             }
-            table.Sort((x, y) => x.time.CompareTo(y.time));
+            // Anonyme (lambda) Funktionen sind nicht mehr notwendig
+            //table.Sort((x, y) => x.time.CompareTo(y.time));
         }
 
         for (int i = 0; i < table.Count; i++)
@@ -83,11 +93,12 @@ public class HighScore : MonoBehaviour {
 
     public void deleteScores()
     {
-        // Löscht alle einträge in Einstellungen (nicht nur HighScores)
-        //PlayerPrefs.DeleteAll();
-        for (int i = 0; i < 10; i++)
+        // Pruefen ob highscore vorhanden ist?
+        int i = 0;
+        while (PlayerPrefs.HasKey("highscore" + i) == true)
         {
             PlayerPrefs.DeleteKey("highscore" + i);
+            i++;
         }
     }
 

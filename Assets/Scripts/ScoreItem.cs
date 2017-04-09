@@ -11,6 +11,11 @@ public class ScoreItem : IComparable<ScoreItem> {
     public float time;
     public string name;
 
+    public ScoreItem()
+    {
+        // Initialize
+    }
+
     public static ScoreItem createFromJSON(string jsonString)
     {
         return JsonUtility.FromJson<ScoreItem>(jsonString);
@@ -23,7 +28,7 @@ public class ScoreItem : IComparable<ScoreItem> {
 
     public int CompareTo(ScoreItem item)
     {
-        return score.CompareTo(item);
+        return score.CompareTo(item.score);
     }
 
     //public static Comparison<ScoreItem> Comparison = delegate (ScoreItem x, ScoreItem y)

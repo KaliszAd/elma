@@ -15,7 +15,7 @@ public class NameInput : MonoBehaviour {
     {
         this.playerName = inputName.text;
         Spielbrett.GetComponent<HighScore>().setScore(playerName);
-        print(playerName);
+        Spielbrett.GetComponent<HighScore>().saveScore();
     }
 
     public string getPlayerName()
