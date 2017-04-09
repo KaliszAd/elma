@@ -82,7 +82,11 @@ public class HighScore : MonoBehaviour {
     public void deleteScores()
     {
         // Löscht alle einträge in Einstellungen (nicht nur HighScores)
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
+        for (int i = 0; i < 10; i++)
+        {
+            PlayerPrefs.DeleteKey("highscore" + i);
+        }
     }
 
     public int getScore()

@@ -14493,16 +14493,16 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2128821159}
+        m_MethodName: set_volume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -20015,7 +20015,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeDelta: 0
-  PauseCanvas: {fileID: 1752494200}
   Spielbrett: {fileID: 2128821157}
 --- !u!54 &1171893261
 Rigidbody:
@@ -21044,10 +21043,21 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1171893263}
+        m_MethodName: set_volume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1234117804 stripped
@@ -26888,10 +26898,32 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2128821159}
+        m_MethodName: set_volume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1171893263}
+        m_MethodName: set_volume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1001 &1573265415
@@ -37527,6 +37559,8 @@ GameObject:
   - component: {fileID: 2128821159}
   - component: {fileID: 2128821160}
   - component: {fileID: 2128821161}
+  - component: {fileID: 2128821162}
+  - component: {fileID: 2128821163}
   m_Layer: 0
   m_Name: Spielbrett
   m_TagString: Untagged
@@ -37660,6 +37694,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cd6d53f324022418f346573fc3d30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2128821162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2128821157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d4002d49cdbf546a67f35fe7c4b5f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseCanvas: {fileID: 1752494200}
+  Spielbrett: {fileID: 2128821157}
+--- !u!114 &2128821163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2128821157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295fa17b4a4e462479bbe8ec1135687c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Music_Volume: 0
+  SFX_Volume: 0
+  Global_Volume: 0
+  MusicVolume: {fileID: 862472682}
+  SFXVolume: {fileID: 1233536419}
+  GlobalVolume: {fileID: 1572684454}
 --- !u!1 &2141104493
 GameObject:
   m_ObjectHideFlags: 0

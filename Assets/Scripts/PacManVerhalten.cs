@@ -21,10 +21,7 @@ public class PacManVerhalten : MonoBehaviour {
     private GameObject mainCamera;
     private AudioSource _Chramst;
 
-    public GameObject PauseCanvas;
     public GameObject Spielbrett;
-    private bool paused = false;
-    private bool showing = false;
 
     // Use this for initialization
     void Start () {
@@ -105,7 +102,7 @@ public class PacManVerhalten : MonoBehaviour {
         }
         if (h == 0) old_h = 0;
 
-        gewinn();
+        Spielbrett.GetComponent<SpielBeenden>().gewinn();
     }
 
     void OnTriggerEnter(Collider col)
@@ -120,33 +117,8 @@ public class PacManVerhalten : MonoBehaviour {
 
         if (col.tag == "Geist")
         {
-            paused = true;
-            Time.timeScale = 0;
-            showing = true;
-            PauseCanvas.SetActive(showing);
-            PauseCanvas.GetComponentInChildren<Text>().text = "Verloren mit Score: " + Spielbrett.GetComponent<HighScore>().getScore().ToString() + 
-                "\nund Zeit: " + Spielbrett.GetComponent<HighScore>().getGameTime().ToString() + " s";
-            PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.SetActive(false);
-            PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("EingabeFeld").gameObject.SetActive(true);
+            Spielbrett.GetComponent<SpielBeenden>().verlust();
         }
     }
 
-    public void gewinn()
-    {
-        if (GameObject.FindGameObjectsWithTag("Kapsel").Length == 0)
-        {
-            paused = true;
-            Time.timeScale = 0;
-            showing = true;
-            PauseCanvas.SetActive(showing);
-            PauseCanvas.GetComponentInChildren<Text>().text = "Gewonnen mit Score: " + Spielbrett.GetComponent<HighScore>().getScore().ToString() + 
-                "\nund Zeit: " + Spielbrett.GetComponent<HighScore>().getGameTime().ToString() + " s";
-            PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.SetActive(false);
-            PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("EingabeFeld").gameObject.SetActive(true);
-        }
-        else
-        {
-            print(GameObject.FindGameObjectsWithTag("Kapsel").Length.ToString());
-        }
-    }
 };
