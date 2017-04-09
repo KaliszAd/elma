@@ -10,22 +10,25 @@ public class SelectOnInput : MonoBehaviour {
 
     private bool buttonSelected;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start() {
 
-        if (Input.GetAxisRaw("Vertical") != 0 && buttonSelected == false) {
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+        if (Input.GetAxisRaw("Vertical") != 0 && buttonSelected == false)
+        {
             eventSystem.SetSelectedGameObject(selectedObject);
             buttonSelected = true;
         }
-	}
+
+        //print(EventSystem.current.currentSelectedGameObject.ToString());
+    }
 
     private void OnDisable()
     {
         buttonSelected = false;
-    } 
+    }
 }

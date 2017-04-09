@@ -21783,6 +21783,7 @@ GameObject:
   - component: {fileID: 1302860538}
   - component: {fileID: 1302860540}
   - component: {fileID: 1302860539}
+  - component: {fileID: 1302860541}
   m_Layer: 10
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -21845,6 +21846,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1302860537}
+--- !u!114 &1302860541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302860537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745dddc94b6db7d4fb9acdc2c1bbedc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1772971818}
+  selectedObject: {fileID: 1489933728}
 --- !u!1 &1304925895 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1091340688717284, guid: 94f6e0cb1e6d0bd4a93823973154283d,
@@ -32922,6 +32936,7 @@ GameObject:
   - component: {fileID: 1892095860}
   - component: {fileID: 1892095862}
   - component: {fileID: 1892095861}
+  - component: {fileID: 1892095863}
   m_Layer: 10
   m_Name: AudioMenu
   m_TagString: Untagged
@@ -32988,6 +33003,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1892095859}
+--- !u!114 &1892095863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1892095859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745dddc94b6db7d4fb9acdc2c1bbedc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1772971818}
+  selectedObject: {fileID: 705082452}
 --- !u!1001 &1892336611
 Prefab:
   m_ObjectHideFlags: 0
