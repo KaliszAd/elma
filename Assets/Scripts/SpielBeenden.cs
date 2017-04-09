@@ -5,12 +5,21 @@ using UnityEngine.UI;
 
 public class SpielBeenden : MonoBehaviour {
 
+    private bool cleaner = false;
+
     public GameObject PauseCanvas;
     public GameObject Spielbrett;
     private bool paused = false;
     private bool showing = false;
 
     public void QuitOnClick() {
+
+        if (cleaner)
+        {
+            // Registry aufräumen
+            PlayerPrefs.DeleteAll();
+            cleaner = false;
+        }
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -44,5 +53,10 @@ public class SpielBeenden : MonoBehaviour {
             PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("Fortsetzen").gameObject.SetActive(false);
             PauseCanvas.gameObject.transform.Find("PauseMenu").gameObject.transform.Find("EingabeFeld").gameObject.SetActive(true);
         }
+    }
+
+    public void setCleaner()
+    {
+        cleaner = true;
     }
 }
