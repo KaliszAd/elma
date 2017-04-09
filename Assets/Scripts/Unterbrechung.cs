@@ -48,6 +48,7 @@ public class Unterbrechung : MonoBehaviour {
 
     public void beenden() {
 
+            // HighScore speichern noch nachziehen
             LoadByIndex(0);
             Time.timeScale = 1;
     }

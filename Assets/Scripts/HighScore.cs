@@ -70,11 +70,13 @@ public class HighScore : MonoBehaviour {
 
     public void loadScore(){
 
-        for (int i = 0; i < 10; i++)
+        // Pruefen ob highscore vorhanden ist?
+        int i = 0;
+        while (PlayerPrefs.HasKey("highscore" + i) == true)
         {
             string jsonData = PlayerPrefs.GetString("highscore" + i);
             table.Add(ScoreItem.createFromJSON(jsonData));
-
+            i++;
             print(jsonData);
         }
     }
@@ -87,6 +89,13 @@ public class HighScore : MonoBehaviour {
         {
             PlayerPrefs.DeleteKey("highscore" + i);
         }
+    }
+
+    public void setScore(string playerName)
+    {
+        this.currentPlayer = playerName;
+        print(currentPlayer + ", " + score + ", " + totalGameTime);
+        addScoreItem();
     }
 
     public int getScore()
@@ -103,6 +112,4 @@ public class HighScore : MonoBehaviour {
     {
         return this.totalGameTime;
     }
-
-
 }

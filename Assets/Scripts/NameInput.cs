@@ -6,13 +6,15 @@ using UnityEngine.Events;
 
 public class NameInput : MonoBehaviour {
 
+    public GameObject Spielbrett;
+
     public InputField inputName;
     private string playerName;
-    //private InputField EingabeFeld;
 
     public void setPlayerName()
     {
         this.playerName = inputName.text;
+        Spielbrett.GetComponent<HighScore>().setScore(playerName);
         print(playerName);
     }
 
