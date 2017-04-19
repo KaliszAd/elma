@@ -42,7 +42,7 @@ public class SpielBeenden : MonoBehaviour {
 
     public void gewinn()
     {
-        if (GameObject.FindGameObjectsWithTag("Kapsel").Length == 0)
+        if (GameObject.FindGameObjectsWithTag("Banane").Length + GameObject.FindGameObjectsWithTag("Erdbeere").Length == 0)
         {
             paused = true;
             Time.timeScale = 0;

@@ -108,13 +108,19 @@ public class PacManVerhalten : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         //Kollision mit Kapsel
-        if (col.tag == "Kapsel")
+        if (col.tag == "Banane")
         {
             Destroy(col.gameObject);
             _Chramst.Play();
             Spielbrett.GetComponent<HighScore>().incrementScore();
         }
-
+        if (col.tag == "Erdbeere")
+        {
+            Destroy(col.gameObject);
+            _Chramst.Play();
+            Spielbrett.GetComponent<HighScore>().incrementScore();
+            Spielbrett.GetComponent<HighScore>().incrementScore();
+        }
         if (col.tag == "Geist")
         {
             Spielbrett.GetComponent<SpielBeenden>().verlust();
